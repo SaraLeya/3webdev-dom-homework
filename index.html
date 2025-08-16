@@ -93,6 +93,7 @@
    const comments = document.getElementById('comments');
    const name = document.getElementById('add-form-name');
    const comment = document.getElementById('add-form-text');
+ 
  button.addEventListener("click", () => {
       textarea.classList.remove("error");
       name.classList.remove("error");
@@ -101,8 +102,8 @@ if (name.valie === "") {
   name.classList.add("error");
   return;
 }
-if (textarea.valie === "") {
-  textarea.classList.add("error");
+if (comment.valie === "") {
+  comment.classList.add("error");
   return;
 }
   const oldComments = comments.innerHTML;
