@@ -8,7 +8,7 @@
 
   <body>
     <div class="container">
-      <ul class="comments">
+      <ul class="comments" id="comments">
         <li class="comment">
           <div class="comment-header">
             <div>Глеб Фокин</div>
@@ -48,26 +48,28 @@
         <input
           type="text"
           class="add-form-name"
+          id="name"
           placeholder="Введите ваше имя"
         />
         <textarea
           type="textarea"
           class="add-form-text"
+          id="textarea"
           placeholder="Введите ваш коментарий"
           rows="4"
         ></textarea>
         <div class="add-form-row">
-          <button class="add-form-button">Написать</button>
+          <button class="add-form-button" id="button">Написать</button>
         </div>
       </div>
     </div>
   </body>
-<style>
+  <style>
     .error {
       background-color: blanchedalmond;
     }
   </style>
-
+  
   <script>
     let myTime;
   let myDate = new Date();
@@ -89,13 +91,14 @@
 
   myTime = day + "." + month + "." + year + " " + hour + ":" + minute
 
-   const button = document.getElementById('add-form-button');
-   const comments = document.getElementById('comments');
-   const name = document.getElementById('add-form-name');
-   const comment = document.getElementById('add-form-text');
- 
- button.addEventListener("click", () => {
-      textarea.classList.remove("error");
+    const button = document.getElementById("button");
+    const comments = document.getElementById("comments");
+    const name = document.getElementById("name");
+    const textarea = document.getElementById("textarea");
+
+    button.addEventListener("click", () => {
+console.log("It works!");
+ textarea.classList.remove("error");
       name.classList.remove("error");
 
 if (name.valie === "") {
@@ -105,27 +108,29 @@ if (name.valie === "") {
 if (comment.valie === "") {
   comment.classList.add("error");
   return;
-}
-  const oldComments = comments.innerHTML;
-    comments.innerHTML = oldComments + <li class="comment">
+ } 
+const oldComments = comments.innerHtml;
+comments.innerHtml = oldComments + 
+`<li class="comment">
           <div class="comment-header">
             <div>${name.value}</div>
-            <div>myTime</div>
+            <div>${myTime}</div>
           </div>
           <div class="comment-body">
             <div class="comment-text">
-             ${textarea.value}
-            </div>
-          </div>
-          <div class="comment-footer">
-            <div class="likes">
-              <span class="likes-counter"></span>
-              <button class="like-button"></button>
-            </div>
-          </div>
-        </li>
-
-});
-
+          ${textarea.value}
+         </div>
+       </div>
+       <div class="comment-footer">
+         <div class="likes">
+           <span class="likes-counter"></span>
+           <button class="like-button"></button>
+         </div>
+       </div>
+     </li>
+`;
+console.log("It works?");
+    });
+    
   </script>
 </html>
