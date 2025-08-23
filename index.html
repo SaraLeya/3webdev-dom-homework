@@ -71,7 +71,15 @@
   </style>
   
   <script>
-    let myTime;
+    
+    const button = document.getElementById("button");
+    const comments = document.getElementById("comments");
+    const name = document.getElementById("name");
+    const textarea = document.getElementById("textarea");
+
+    button.addEventListener("click", () => {
+     
+let myTime;
   let myDate = new Date();
   let day = myDate.getDate();
   let month = myDate.getMonth();
@@ -89,28 +97,22 @@
     minute = "0" + minute;
   }
 
-  myTime = day + "." + month + "." + year + " " + hour + ":" + minute
+  myTime = day + "." + month + "." + year + " " + hour + ":" + minute;
 
-    const button = document.getElementById("button");
-    const comments = document.getElementById("comments");
-    const name = document.getElementById("name");
-    const textarea = document.getElementById("textarea");
-
-    button.addEventListener("click", () => {
-console.log("It works!");
+  console.log("It works!");
  textarea.classList.remove("error");
       name.classList.remove("error");
 
-if (name.valie === "") {
+if (name.value === "") {
   name.classList.add("error");
   return;
 }
-if (textarea.valie === "") {
+if (textarea.value === "") {
   textarea.classList.add("error");
   return;
  } 
-const oldComments = comments.innerHtml;
-comments.innerHtml = oldComments + 
+const oldComments = comments.innerHTML;
+comments.innerHTML = oldComments + 
 `<li class="comment">
           <div class="comment-header">
             <div>${name.value}</div>
@@ -129,6 +131,8 @@ comments.innerHtml = oldComments +
        </div>
      </li>
 `;
+textarea.value = "";
+name.value = "";
 console.log("It works?");
     });
     
